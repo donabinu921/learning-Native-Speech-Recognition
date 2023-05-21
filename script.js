@@ -2,10 +2,10 @@ window.SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
 
 const recognition = new SpeechRecognition();
-recognition.interimResults = true;
+recognition.interimResults = true; //so the speech is displayed real time
 recognition.lang = "en-US";
 
-let p = document.createElement("p");
+let p = document.createElement("p"); //speech displayed in para
 const words = document.querySelector(".words");
 words.appendChild(p);
 
@@ -15,7 +15,7 @@ recognition.addEventListener("result", (e) => {
     .map((result) => result.transcript)
     .join("");
 
-  if (e.results[0].isFinal) {
+  if (e.results[0].isFinal) {  //once we stop talking, starts another para
     p = document.createElement("p");
     words.appendChild(p);
   }
